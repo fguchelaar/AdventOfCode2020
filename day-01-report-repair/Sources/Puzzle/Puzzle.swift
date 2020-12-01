@@ -21,7 +21,7 @@ public class Puzzle {
     private func solve(with count: Int, for result: Int) -> Int {
         input
             .combinations(ofCount: count)
-            .first { $0.reduce(0, +) == result }
+            .first { $0.reduce(0, +) == result }!
             .reduce(1, *)
     }
 }
