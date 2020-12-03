@@ -1,4 +1,4 @@
-# day-01 Report Repair 
+# 01 Report Repair 
 
 My first solution was a straightforward nested for-loop. That works like a 
 charm, but then I stumbled upon the [swift-algorithms](https://github.com/apple/swift-algorithms)
