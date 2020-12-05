@@ -27,7 +27,15 @@ public class Puzzle {
             .max()!
     }
 
-    public func part2() -> String {
-        ""
+    public func part2() -> Int {
+        let ids = input
+            .map(id(for:))
+
+        let mySeatId = (8...).first {
+            ids.contains($0 - 1)
+                && !ids.contains($0)
+                && ids.contains($0 + 1)
+        }
+        return mySeatId!
     }
 }
