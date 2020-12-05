@@ -11,10 +11,8 @@ public class Puzzle {
 
     func id(for boardingPass: String) -> Int {
         Int(boardingPass
-            .replacingOccurrences(of: "B", with: "1")
-            .replacingOccurrences(of: "F", with: "0")
-            .replacingOccurrences(of: "R", with: "1")
-            .replacingOccurrences(of: "L", with: "0"),
+            .replacingOccurrences(of: "F|L", with: "0", options: .regularExpression)
+            .replacingOccurrences(of: "B|R", with: "1", options: .regularExpression),
             radix: 2)!
     }
 
