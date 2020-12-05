@@ -10,15 +10,12 @@ public class Puzzle {
     }
 
     func id(for boardingPass: String) -> Int {
-        let s = boardingPass
+        Int(boardingPass
             .replacingOccurrences(of: "B", with: "1")
             .replacingOccurrences(of: "F", with: "0")
             .replacingOccurrences(of: "R", with: "1")
-            .replacingOccurrences(of: "L", with: "0")
-
-        let row = Int(s.prefix(7), radix: 2)!
-        let column = Int(s.suffix(3), radix: 2)!
-        return row * 8 + column
+            .replacingOccurrences(of: "L", with: "0"),
+            radix: 2)!
     }
 
     public func part1() -> Int {
