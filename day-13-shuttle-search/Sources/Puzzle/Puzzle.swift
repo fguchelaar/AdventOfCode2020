@@ -25,24 +25,20 @@ public class Puzzle {
     }
 
     public func part2() -> Int {
-        let x = ids
-            .enumerated().filter { $0.element != nil }
+        var ts = 0
+        let shuttles = ids.enumerated()
+            .filter { $0.element != nil }
+            .map { ($0.element!, $0.offset) }
+        var interval = shuttles[0].0
 
-        let max = x.max { $0.element! < $1.element! }!
-        let tail = x.filter { $0.element != max.element }
-
-        var cycles = 0
-        let a = stride(from: max.element! * (526_090_310_999_410 / max.element!), to: Int.max, by: max.element!).first { ts in
-//        let a = stride(from: max.element!, to: Int.max, by: max.element!).first { ts in
-            cycles += 1
-            if cycles % 1_000_000 == 0 {
-                print("\(cycles):\t\(ts)")
+        shuttles.dropFirst().forEach { shuttle in
+            var t = ts
+            while (t + shuttle.1) % shuttle.0 != 0 {
+                t += interval
             }
-            return tail.allSatisfy { s in
-                (ts + (s.offset - max.offset)) % s.element! == 0
-            }
+            ts = t
+            interval = lcm(interval, shuttle.0)
         }
-
-        return a! - max.offset
+        return ts
     }
 }
