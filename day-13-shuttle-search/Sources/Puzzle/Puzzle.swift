@@ -25,18 +25,17 @@ public class Puzzle {
     }
 
     public func part2() -> Int {
-        var ts = 0
         let shuttles = ids.enumerated()
             .filter { $0.element != nil }
             .map { ($0.element!, $0.offset) }
+
         var interval = shuttles[0].0
+        var ts = interval
 
         shuttles.dropFirst().forEach { shuttle in
-            var t = ts
-            while (t + shuttle.1) % shuttle.0 != 0 {
-                t += interval
+            while (ts + shuttle.1) % shuttle.0 != 0 {
+                ts += interval
             }
-            ts = t
             interval = lcm(interval, shuttle.0)
         }
         return ts
