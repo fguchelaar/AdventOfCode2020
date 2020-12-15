@@ -124,7 +124,7 @@ public class Puzzle {
                 }
 
                 let occupied = n8_2(layout, toPoint(i, columns))
-                    .filter { inBounds($0, rows, columns) && layout[toIndex($0, columns)] == "#" }
+                    .filter { layout[toIndex($0, columns)] == "#" }
                     .count
 
                 if e == "L", occupied == 0 {
