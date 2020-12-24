@@ -13,12 +13,8 @@ public class Puzzle {
         switch oper {
         case "+":
             return op1 + op2
-        case "-":
-            return op1 - op2
         case "*":
             return op1 * op2
-        case "/":
-            return op1 / op2
         default:
             fatalError()
         }
