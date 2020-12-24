@@ -51,10 +51,10 @@ public class Puzzle {
                 let endIndex = findMatchingParentheses(in: expression, startIndex: pos)
 
                 // eval the expression within the parentheses
-                // then use it as a value for the containing expression
                 let start = expression.index(after: pos)
                 let end = expression.index(before: endIndex)
 
+                // then use it as a value for the containing expression
                 let sub = eval(String(expression[start ..< end]))
                 expression.replaceSubrange(pos ..< endIndex, with: String(sub))
             } else {
